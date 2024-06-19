@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 const icon = require("../assets/icons/menu.png");
+const playIcon = require("../assets/icons/play.png");
 const VideoCard = ({
   video: {
     title,
@@ -43,11 +44,20 @@ const VideoCard = ({
       {play ? (
         <Text className="text-white text-xl">Playing</Text>
       ) : (
-        <TouchableOpacity className="w-full h-60 rounded-xl mt-3 relative justify-center items-center">
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => setPlay(true)}
+          className="w-full h-60 rounded-xl mt-3 relative justify-center items-center"
+        >
           <Image
             source={{ uri: thumbnail }}
             className="w-full h-full rounded-xl mt-3"
             resizeMode="cover"
+          />
+          <Image
+            source={playIcon}
+            className="w-12 h-12 absolute"
+            resizeMode="contain"
           />
         </TouchableOpacity>
       )}
